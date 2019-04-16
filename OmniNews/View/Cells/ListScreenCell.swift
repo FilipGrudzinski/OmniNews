@@ -10,6 +10,10 @@ import UIKit
 
 class ListScreenCell: UITableViewCell {
 
+    @IBOutlet weak var imageVIewForArticles: UIImageView!
+    @IBOutlet weak var labelForTitleArticles: UILabel!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
