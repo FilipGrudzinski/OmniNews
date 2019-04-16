@@ -1,0 +1,6 @@
+framework module Pods_OmniNews {
+  umbrella header "Pods-OmniNews-umbrella.h"
+
+  export *
+  module * { export * }
+}
