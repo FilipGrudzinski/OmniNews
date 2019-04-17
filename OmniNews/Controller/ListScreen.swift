@@ -14,42 +14,53 @@ import Kingfisher
 
 class ListScreen: UIViewController {
     private let omniUrl = "https://omni-content.omni.news/search?query=stockholm" //Added https to avoide App Transport Security policy required the use of a secure connection
+    var searchItem = ""
     private var articlesArray = [ArticleModel]()
     private var topicsArray = [TopicModel]()
     @IBOutlet weak var listTableView: UITableView!
     @IBOutlet weak var articlesTopicsSegment: UISegmentedControl!
-   
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         loadArticlesAndTopics()
     }
     
     @IBAction func articlesTopicsSegmentControl(_ sender: UISegmentedControl) {
-        
         switch articlesTopicsSegment.selectedSegmentIndex {
         case 0:
-            print("Articles Segment Selected")
+            listTableView.reloadData()
         case 1:
-            print("Topics Segment Selected")
+            listTableView.reloadData()
         default:
             break
         }
-        
     }
 }
 
 // MARK: - UITableViewDataSource
 extension ListScreen: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return articlesArray.count
+        if articlesTopicsSegment.selectedSegmentIndex == 0 {
+            return articlesArray.count
+        } else {
+            return topicsArray.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ArticlesAndTopicsCell
-        cell.articleOrTopicLabel.text = articlesArray[indexPath.row].articleTitle
-        let resource = ImageResource(downloadURL: URL(string: "https://gfx-ios.omni.se/images/\(articlesArray[indexPath.row].articleImageID)")!, cacheKey: "https://gfx-ios.omni.se/images/\(articlesArray[indexPath.row].articleImageID)")
-        cell.articleImage.kf.setImage(with: resource)
-        
+        if articlesTopicsSegment.selectedSegmentIndex == 0 {
+            cell.articleImage.isHidden = false
+            cell.typeTopicLabel.isHidden = true
+            cell.articleOrTopicLabel.text = articlesArray[indexPath.row].articleTitle
+            let resource = ImageResource(downloadURL: URL(string: "https://gfx-ios.omni.se/images/\(articlesArray[indexPath.row].articleImageID)")!, cacheKey: "https://gfx-ios.omni.se/images/\(articlesArray[indexPath.row].articleImageID)")
+            cell.articleImage.kf.setImage(with: resource)
+        } else {
+            cell.articleImage.isHidden = true
+            cell.typeTopicLabel.isHidden = false
+            cell.articleOrTopicLabel.text = topicsArray[indexPath.row].topicTitle
+            cell.typeTopicLabel.text = topicsArray[indexPath.row].topicType.capitalized
+        }
         return cell
     }
 }
@@ -57,12 +68,15 @@ extension ListScreen: UITableViewDataSource {
 // MARK: - UIScrollViewDelegate
 extension ListScreen: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 160
+        if articlesTopicsSegment.selectedSegmentIndex == 0 {
+            return 160
+        } else {
+            return 60
+        }
     }
 }
 
 //MARK: - Extension for Data request and Json save
-
 extension ListScreen {
     private func loadArticlesAndTopics() {
         SVProgressHUD.show(withStatus: "In Progress")
@@ -93,8 +107,5 @@ extension ListScreen {
         
         SVProgressHUD.dismiss()
         listTableView.reloadData()
-        
     }
 }
-
-

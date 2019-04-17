@@ -13,4 +13,3 @@ struct ArticleModel {
     let articleImageID: String
 }
 
-

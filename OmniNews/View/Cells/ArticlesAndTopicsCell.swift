@@ -11,6 +11,7 @@ import UIKit
 class ArticlesAndTopicsCell: UITableViewCell {
     @IBOutlet weak var articleImage: UIImageView!
     @IBOutlet weak var articleOrTopicLabel: UILabel!
+    @IBOutlet weak var typeTopicLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -19,7 +20,6 @@ class ArticlesAndTopicsCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
         // Configure the view for the selected state
     }
     
