@@ -9,22 +9,12 @@
 import UIKit
 
 class DetailViewController: UIViewController {
-
+    @IBOutlet weak var detailTextView: UITextView!
+    var detailText = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        title = "Detail"
+        detailTextView.text = detailText
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

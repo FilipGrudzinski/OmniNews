@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -13,7 +13,7 @@
         <!--List Screen View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="UIViewController-BYZ-38-t0r" id="BYZ-38-t0r" customClass="ListScreenViewController" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ListScreenViewController" customModule="OmniNews" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -40,10 +40,10 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PzR-3U-YZo">
-                                                    <rect key="frame" x="0.0" y="25.5" width="375" height="134"/>
+                                                    <rect key="frame" x="0.0" y="30.5" width="375" height="129"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aYj-jj-7xr">
-                                                    <rect key="frame" x="10" y="0.0" width="355" height="20.5"/>
+                                                    <rect key="frame" x="10" y="5" width="355" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -55,7 +55,7 @@
                                                 <constraint firstItem="PzR-3U-YZo" firstAttribute="leading" secondItem="OAi-rU-6dQ" secondAttribute="leading" id="QUU-Rz-4hN"/>
                                                 <constraint firstItem="aYj-jj-7xr" firstAttribute="leading" secondItem="OAi-rU-6dQ" secondAttribute="leading" constant="10" id="RNP-vj-2Ks"/>
                                                 <constraint firstAttribute="trailing" secondItem="aYj-jj-7xr" secondAttribute="trailing" constant="10" id="cPy-6T-Fqn"/>
-                                                <constraint firstItem="aYj-jj-7xr" firstAttribute="top" secondItem="OAi-rU-6dQ" secondAttribute="top" id="r0Y-uf-BWg"/>
+                                                <constraint firstItem="aYj-jj-7xr" firstAttribute="top" secondItem="OAi-rU-6dQ" secondAttribute="top" constant="5" id="r0Y-uf-BWg"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>

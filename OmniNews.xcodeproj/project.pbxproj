@@ -66,9 +66,9 @@
 		141741B62266348600FC407D /* View */ = {
 			isa = PBXGroup;
 			children = (
-				14540FC12267DB9000C7FC72 /* Detail.storyboard */,
 				14540FBD2267B25100C7FC72 /* Main.storyboard */,
 				146C4FF822662DBC008C1706 /* ListScreen.storyboard */,
+				14540FC12267DB9000C7FC72 /* Detail.storyboard */,
 				141741B8226634A400FC407D /* Cells */,
 			);
 			path = View;

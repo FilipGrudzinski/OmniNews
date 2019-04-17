@@ -17,9 +17,27 @@
                     <view key="view" contentMode="scaleToFill" id="eoL-io-JcI">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GVI-tl-WP3">
+                                <rect key="frame" x="10" y="20" width="300" height="548"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="p0m-Ls-j0p" firstAttribute="bottom" secondItem="GVI-tl-WP3" secondAttribute="bottom" id="31V-IL-8xy"/>
+                            <constraint firstItem="GVI-tl-WP3" firstAttribute="leading" secondItem="p0m-Ls-j0p" secondAttribute="leading" constant="10" id="RNH-MB-qsa"/>
+                            <constraint firstItem="p0m-Ls-j0p" firstAttribute="trailing" secondItem="GVI-tl-WP3" secondAttribute="trailing" constant="10" id="SXg-EC-rbx"/>
+                            <constraint firstItem="GVI-tl-WP3" firstAttribute="top" secondItem="p0m-Ls-j0p" secondAttribute="top" id="dLF-yd-Oqw"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="p0m-Ls-j0p"/>
                     </view>
+                    <connections>
+                        <outlet property="detailTextView" destination="GVI-tl-WP3" id="zre-Gr-UH4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VFX-vM-puL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

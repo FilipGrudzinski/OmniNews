@@ -46,17 +46,17 @@
                     <navigationItem key="navigationItem" title="Omni News" id="du5-JZ-Usx"/>
                     <connections>
                         <outlet property="searchTextField" destination="Ggi-D3-g6E" id="mOh-Gc-QoU"/>
-                        <segue destination="8Oy-NH-piZ" kind="show" identifier="goToListScreen" id="QPz-67-mPB"/>
+                        <segue destination="8Oy-NH-piZ" kind="show" identifier="goToListScreen" id="dZc-qw-tkU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EZ0-L6-eRK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="307.5" y="26.408450704225352"/>
         </scene>
-        <!--UIViewController-BYZ-38-t0r-->
+        <!--ListScreen-->
         <scene sceneID="uQj-bf-VKx">
             <objects>
-                <viewControllerPlaceholder storyboardName="ListScreen" referencedIdentifier="UIViewController-BYZ-38-t0r" id="8Oy-NH-piZ" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="ListScreen" id="8Oy-NH-piZ" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rrb-5J-Jin" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1155" y="26.408450704225352"/>

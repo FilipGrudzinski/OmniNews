@@ -36,7 +36,7 @@ class MainViewController: UIViewController  {
    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToListScreen" {
-            let secondVC = segue.destination as! ListScreen
+            let secondVC = segue.destination as! ListScreenViewController
             secondVC.searchItem = searchTextField.text!.trimmingCharacters(in: .whitespaces)
         }
     }

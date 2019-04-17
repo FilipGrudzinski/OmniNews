@@ -11,5 +11,6 @@ import Foundation
 struct ArticleModel {
     let articleTitle: String
     let articleImageID: String
+    let articlesMainText: [String]
 }
 
