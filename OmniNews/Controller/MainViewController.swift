@@ -16,6 +16,14 @@ class MainViewController: UIViewController  {
         searchTextField.delegate = self
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        searchTextField.text = nil
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        view.endEditing(true)
+    }
+    
     @IBAction func searchButton(_ sender: Any) {
         if !searchTextField.text!.trimmingCharacters(in: .whitespaces).isEmpty {
             performSegue(withIdentifier: "goToListScreen", sender: self)
@@ -23,13 +31,13 @@ class MainViewController: UIViewController  {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
+        view.endEditing(true)
     }
    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToListScreen" {
             let secondVC = segue.destination as! ListScreen
-            secondVC.searchItem = searchTextField.text!
+            secondVC.searchItem = searchTextField.text!.trimmingCharacters(in: .whitespaces)
         }
     }
 }
@@ -37,7 +45,7 @@ class MainViewController: UIViewController  {
 // MARK: - UITextFieldDelegate
 extension MainViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        self.view.endEditing(true)
+        view.endEditing(true)
         return false
     }
 }

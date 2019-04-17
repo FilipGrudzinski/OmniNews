@@ -13,7 +13,9 @@ import SVProgressHUD
 import Kingfisher
 
 class ListScreen: UIViewController {
-    private let omniUrl = "https://omni-content.omni.news/search?query=stockholm" //Added https to avoide App Transport Security policy required the use of a secure connection
+    //private let omniUrl = "https://omni-content.omni.news/search?query=" //Added https to avoide App Transport Security policy required the use of a secure connection
+    private let omniUrl = "https://omni-content.omni.news/search?query="
+    private let cache = ImageCache.default
     var searchItem = ""
     private var articlesArray = [ArticleModel]()
     private var topicsArray = [TopicModel]()
@@ -22,7 +24,12 @@ class ListScreen: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "\(searchItem.capitalized) results"
         loadArticlesAndTopics()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        cache.clearMemoryCache()
     }
     
     @IBAction func articlesTopicsSegmentControl(_ sender: UISegmentedControl) {
@@ -51,15 +58,13 @@ extension ListScreen: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ArticlesAndTopicsCell
         if articlesTopicsSegment.selectedSegmentIndex == 0 {
             cell.articleImage.isHidden = false
-            cell.typeTopicLabel.isHidden = true
-            cell.articleOrTopicLabel.text = articlesArray[indexPath.row].articleTitle
             let resource = ImageResource(downloadURL: URL(string: "https://gfx-ios.omni.se/images/\(articlesArray[indexPath.row].articleImageID)")!, cacheKey: "https://gfx-ios.omni.se/images/\(articlesArray[indexPath.row].articleImageID)")
             cell.articleImage.kf.setImage(with: resource)
+            cell.articleOrTopicLabel.text = articlesArray[indexPath.row].articleTitle
+            print(articlesArray[indexPath.row].articleTitle)
         } else {
             cell.articleImage.isHidden = true
-            cell.typeTopicLabel.isHidden = false
             cell.articleOrTopicLabel.text = topicsArray[indexPath.row].topicTitle
-            cell.typeTopicLabel.text = topicsArray[indexPath.row].topicType.capitalized
         }
         return cell
     }
@@ -80,11 +85,13 @@ extension ListScreen: UITableViewDelegate {
 extension ListScreen {
     private func loadArticlesAndTopics() {
         SVProgressHUD.show(withStatus: "In Progress")
-        Alamofire.request(omniUrl, method: .get).validate().responseJSON { response in
+        //print("\(omniUrl)\(searchItem)")
+        Alamofire.request("\(omniUrl)\(searchItem)", method: .get).validate().responseJSON { response in
             if response.result.value != nil {
                 let responseJSON: JSON = JSON(response.result.value!)
                 self.savingJson(responseJSON)
-                
+                SVProgressHUD.dismiss()
+                //print(self.articlesArray)
             } else {
                 SVProgressHUD.dismiss()
             }
@@ -104,8 +111,6 @@ extension ListScreen {
             let topic = TopicModel(topicTitle: topics["title"].stringValue, topicType: topics["type"].stringValue)
             topicsArray.append(topic)
         })
-        
-        SVProgressHUD.dismiss()
         listTableView.reloadData()
     }
 }

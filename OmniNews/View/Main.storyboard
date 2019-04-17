@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Main View Controller-->
+        <!--Omni News-->
         <scene sceneID="yS3-2q-2Ct">
             <objects>
                 <viewController id="hBL-Ko-0ba" customClass="MainViewController" customModule="OmniNews" customModuleProvider="target" sceneMemberID="viewController">
@@ -18,20 +18,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Omni News" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8i9-yo-Hu3">
-                                <rect key="frame" x="16" y="104" width="288" height="31.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search News" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ggi-D3-g6E">
-                                <rect key="frame" x="16" y="275.5" width="288" height="30"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search News" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="Ggi-D3-g6E">
+                                <rect key="frame" x="16" y="184" width="288" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PcK-uE-k2g">
-                                <rect key="frame" x="16" y="321.5" width="288" height="30"/>
+                                <rect key="frame" x="16" y="230" width="288" height="30"/>
                                 <state key="normal" title="Search"/>
                                 <connections>
                                     <action selector="searchButton:" destination="hBL-Ko-0ba" eventType="touchUpInside" id="4hk-Zz-4tB"/>
@@ -43,16 +37,13 @@
                             <constraint firstItem="Ggi-D3-g6E" firstAttribute="leading" secondItem="az5-Qq-lCf" secondAttribute="leading" constant="16" id="58J-1f-pdr"/>
                             <constraint firstItem="PcK-uE-k2g" firstAttribute="leading" secondItem="az5-Qq-lCf" secondAttribute="leading" constant="16" id="EoQ-OF-dna"/>
                             <constraint firstItem="PcK-uE-k2g" firstAttribute="top" secondItem="Ggi-D3-g6E" secondAttribute="bottom" constant="16" id="GMd-g9-w8w"/>
-                            <constraint firstItem="8i9-yo-Hu3" firstAttribute="leading" secondItem="az5-Qq-lCf" secondAttribute="leading" constant="16" id="YCh-wk-lO1"/>
-                            <constraint firstItem="Ggi-D3-g6E" firstAttribute="top" secondItem="8i9-yo-Hu3" secondAttribute="bottom" constant="140" id="bsA-eA-tiS"/>
-                            <constraint firstItem="az5-Qq-lCf" firstAttribute="trailing" secondItem="8i9-yo-Hu3" secondAttribute="trailing" constant="16" id="d1w-LP-25J"/>
+                            <constraint firstItem="Ggi-D3-g6E" firstAttribute="top" secondItem="az5-Qq-lCf" secondAttribute="top" constant="120" id="O0W-xm-u8K"/>
                             <constraint firstItem="az5-Qq-lCf" firstAttribute="trailing" secondItem="PcK-uE-k2g" secondAttribute="trailing" constant="16" id="fVm-WM-4Jz"/>
-                            <constraint firstItem="8i9-yo-Hu3" firstAttribute="top" secondItem="az5-Qq-lCf" secondAttribute="top" constant="40" id="g82-Te-EUe"/>
                             <constraint firstItem="az5-Qq-lCf" firstAttribute="trailing" secondItem="Ggi-D3-g6E" secondAttribute="trailing" constant="16" id="kyA-CF-KFI"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="az5-Qq-lCf"/>
                     </view>
-                    <navigationItem key="navigationItem" id="du5-JZ-Usx"/>
+                    <navigationItem key="navigationItem" title="Omni News" id="du5-JZ-Usx"/>
                     <connections>
                         <outlet property="searchTextField" destination="Ggi-D3-g6E" id="mOh-Gc-QoU"/>
                         <segue destination="8Oy-NH-piZ" kind="show" identifier="goToListScreen" id="QPz-67-mPB"/>

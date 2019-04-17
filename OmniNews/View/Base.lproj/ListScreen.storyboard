@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--List Screen-->
+        <!--List Screen View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="UIViewController-BYZ-38-t0r" id="BYZ-38-t0r" customClass="ListScreen" customModule="OmniNews" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="UIViewController-BYZ-38-t0r" id="BYZ-38-t0r" customClass="ListScreenViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -47,30 +47,20 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bqn-yJ-Ihn">
-                                                    <rect key="frame" x="10" y="30.5" width="355" height="20.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="PzR-3U-YZo" secondAttribute="bottom" id="1AR-VN-fKL"/>
                                                 <constraint firstAttribute="trailing" secondItem="PzR-3U-YZo" secondAttribute="trailing" id="B2u-4i-StE"/>
                                                 <constraint firstItem="PzR-3U-YZo" firstAttribute="top" secondItem="aYj-jj-7xr" secondAttribute="bottom" constant="5" id="Dph-to-TID"/>
-                                                <constraint firstAttribute="trailing" secondItem="Bqn-yJ-Ihn" secondAttribute="trailing" constant="10" id="PKo-5e-2tu"/>
                                                 <constraint firstItem="PzR-3U-YZo" firstAttribute="leading" secondItem="OAi-rU-6dQ" secondAttribute="leading" id="QUU-Rz-4hN"/>
                                                 <constraint firstItem="aYj-jj-7xr" firstAttribute="leading" secondItem="OAi-rU-6dQ" secondAttribute="leading" constant="10" id="RNP-vj-2Ks"/>
-                                                <constraint firstItem="Bqn-yJ-Ihn" firstAttribute="leading" secondItem="OAi-rU-6dQ" secondAttribute="leading" constant="10" id="U2F-Es-ovO"/>
                                                 <constraint firstAttribute="trailing" secondItem="aYj-jj-7xr" secondAttribute="trailing" constant="10" id="cPy-6T-Fqn"/>
-                                                <constraint firstItem="Bqn-yJ-Ihn" firstAttribute="top" secondItem="aYj-jj-7xr" secondAttribute="bottom" constant="10" id="oqa-gP-otg"/>
                                                 <constraint firstItem="aYj-jj-7xr" firstAttribute="top" secondItem="OAi-rU-6dQ" secondAttribute="top" id="r0Y-uf-BWg"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="articleImage" destination="PzR-3U-YZo" id="htb-YQ-VjW"/>
                                             <outlet property="articleOrTopicLabel" destination="aYj-jj-7xr" id="pqO-X8-KtA"/>
-                                            <outlet property="typeTopicLabel" destination="Bqn-yJ-Ihn" id="8Mw-Uj-dxD"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -94,11 +84,20 @@
                     <connections>
                         <outlet property="articlesTopicsSegment" destination="7lR-q5-bTA" id="Mvf-kZ-ech"/>
                         <outlet property="listTableView" destination="d1f-zg-fFT" id="xad-0M-OUZ"/>
+                        <segue destination="Xbv-ZU-cGp" kind="show" identifier="goToDetail" id="fbd-QX-yI3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="157.59999999999999" y="27.436281859070466"/>
+            <point key="canvasLocation" x="-418" y="56"/>
+        </scene>
+        <!--Detail-->
+        <scene sceneID="UMf-9o-4bp">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Detail" id="Xbv-ZU-cGp" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hhT-cU-pfT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="361" y="55"/>
         </scene>
     </scenes>
 </document>
