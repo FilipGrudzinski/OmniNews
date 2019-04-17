@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="lsw-JE-eG6">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Main View Controller-->
+        <scene sceneID="yS3-2q-2Ct">
+            <objects>
+                <viewController id="hBL-Ko-0ba" customClass="MainViewController" customModule="OmniNews" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="b2T-mF-ALY">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Omni News" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8i9-yo-Hu3">
+                                <rect key="frame" x="16" y="104" width="288" height="31.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search News" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ggi-D3-g6E">
+                                <rect key="frame" x="16" y="275.5" width="288" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PcK-uE-k2g">
+                                <rect key="frame" x="16" y="321.5" width="288" height="30"/>
+                                <state key="normal" title="Search"/>
+                                <connections>
+                                    <action selector="searchButton:" destination="hBL-Ko-0ba" eventType="touchUpInside" id="4hk-Zz-4tB"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Ggi-D3-g6E" firstAttribute="leading" secondItem="az5-Qq-lCf" secondAttribute="leading" constant="16" id="58J-1f-pdr"/>
+                            <constraint firstItem="PcK-uE-k2g" firstAttribute="leading" secondItem="az5-Qq-lCf" secondAttribute="leading" constant="16" id="EoQ-OF-dna"/>
+                            <constraint firstItem="PcK-uE-k2g" firstAttribute="top" secondItem="Ggi-D3-g6E" secondAttribute="bottom" constant="16" id="GMd-g9-w8w"/>
+                            <constraint firstItem="8i9-yo-Hu3" firstAttribute="leading" secondItem="az5-Qq-lCf" secondAttribute="leading" constant="16" id="YCh-wk-lO1"/>
+                            <constraint firstItem="Ggi-D3-g6E" firstAttribute="top" secondItem="8i9-yo-Hu3" secondAttribute="bottom" constant="140" id="bsA-eA-tiS"/>
+                            <constraint firstItem="az5-Qq-lCf" firstAttribute="trailing" secondItem="8i9-yo-Hu3" secondAttribute="trailing" constant="16" id="d1w-LP-25J"/>
+                            <constraint firstItem="az5-Qq-lCf" firstAttribute="trailing" secondItem="PcK-uE-k2g" secondAttribute="trailing" constant="16" id="fVm-WM-4Jz"/>
+                            <constraint firstItem="8i9-yo-Hu3" firstAttribute="top" secondItem="az5-Qq-lCf" secondAttribute="top" constant="40" id="g82-Te-EUe"/>
+                            <constraint firstItem="az5-Qq-lCf" firstAttribute="trailing" secondItem="Ggi-D3-g6E" secondAttribute="trailing" constant="16" id="kyA-CF-KFI"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="az5-Qq-lCf"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="du5-JZ-Usx"/>
+                    <connections>
+                        <outlet property="searchTextField" destination="Ggi-D3-g6E" id="mOh-Gc-QoU"/>
+                        <segue destination="8Oy-NH-piZ" kind="show" identifier="goToListScreen" id="QPz-67-mPB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EZ0-L6-eRK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="307.5" y="26.408450704225352"/>
+        </scene>
+        <!--UIViewController-BYZ-38-t0r-->
+        <scene sceneID="uQj-bf-VKx">
+            <objects>
+                <viewControllerPlaceholder storyboardName="ListScreen" referencedIdentifier="UIViewController-BYZ-38-t0r" id="8Oy-NH-piZ" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rrb-5J-Jin" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1155" y="26.408450704225352"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="dEx-Zh-LZ7">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="lsw-JE-eG6" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="qVE-0B-bLO">
+                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="hBL-Ko-0ba" kind="relationship" relationship="rootViewController" id="xUR-O0-O6c"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="90W-QI-Xt3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-690" y="26.408450704225352"/>
+        </scene>
+    </scenes>
+</document>
