@@ -1,18 +1,16 @@
 //
-//  ListScreenCell.swift
+//  ArticleCell.swift
 //  OmniNews
 //
-//  Created by Filip on 16/04/2019.
+//  Created by Filip on 17/04/2019.
 //  Copyright © 2019 Filip. All rights reserved.
 //
 
 import UIKit
 
-class ListScreenCell: UITableViewCell {
-
-    @IBOutlet weak var imageVIewForArticles: UIImageView!
-    @IBOutlet weak var labelForTitleArticles: UILabel!
-    
+class ArticlesAndTopicsCell: UITableViewCell {
+    @IBOutlet weak var articleImage: UIImageView!
+    @IBOutlet weak var articleOrTopicLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -24,5 +22,5 @@ class ListScreenCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+    
 }
