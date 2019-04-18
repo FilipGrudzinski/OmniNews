@@ -20,10 +20,6 @@ class MainViewController: UIViewController  {
         searchTextField.text = nil
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        view.endEditing(true)
-    }
-    
     @IBAction func searchButton(_ sender: Any) {
         if !searchTextField.text!.trimmingCharacters(in: .whitespaces).isEmpty {
             performSegue(withIdentifier: "goToListScreen", sender: self)

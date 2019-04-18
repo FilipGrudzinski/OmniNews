@@ -13,13 +13,13 @@ import SVProgressHUD
 import Kingfisher
 
 class ListScreenViewController: UIViewController {
-    private let omniUrl = "https://omni-content.omni.news/search?query=" //Added https to avoide App Transport Security policy required the use of a secure connection
-    private let cache = ImageCache.default
-    var searchItem = ""
-    private var articlesArray = [ArticleModel]()
-    private var topicsArray = [TopicModel]()
     @IBOutlet weak var listTableView: UITableView!
     @IBOutlet weak var articlesTopicsSegment: UISegmentedControl!
+    var searchItem = ""
+    private let omniUrl = "https://omni-content.omni.news/search?query=" //Added https to avoide App Transport Security policy required the use of a secure connection
+    private let cache = ImageCache.default
+    private var articlesArray = [ArticleModel]()
+    private var topicsArray = [TopicModel]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,15 +59,17 @@ extension ListScreenViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ArticlesAndTopicsCell
         if articlesArray.count > 0 || topicsArray.count > 0 {
             articlesTopicsSegment.isEnabled = true
-            if articlesTopicsSegment.selectedSegmentIndex == 0 {
-                cell.articleImage.isHidden = false
-                let resource = ImageResource(downloadURL: URL(string: "http://gfx-ios.omni.se/images/\(articlesArray[indexPath.row].articleImageID)")!, cacheKey: "http://gfx-ios.omni.se/images/\(articlesArray[indexPath.row].articleImageID)")
-                cell.articleImage.kf.setImage(with: resource)
-                cell.articleOrTopicLabel.text = articlesArray[indexPath.row].articleTitle
-            } else {
+            
+            guard articlesTopicsSegment.selectedSegmentIndex == 0 else {
                 cell.articleImage.isHidden = true
                 cell.articleOrTopicLabel.text = topicsArray[indexPath.row].topicTitle
+                return cell
             }
+            cell.articleImage.isHidden = false
+            let resource = ImageResource(downloadURL: URL(string: "http://gfx-ios.omni.se/images/\(articlesArray[indexPath.row].articleImageID)")!, cacheKey: "http://gfx-ios.omni.se/images/\(articlesArray[indexPath.row].articleImageID)")
+            cell.articleImage.kf.setImage(with: resource)
+            cell.articleOrTopicLabel.text = articlesArray[indexPath.row].articleTitle
+            
         } else {
             articlesTopicsSegment.isEnabled = false
             cell.articleOrTopicLabel.text = "No Items Found"
@@ -88,16 +90,17 @@ extension ListScreenViewController: UITableViewDelegate {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "goToDetail" {
-            let detailVC = segue.destination as! DetailViewController
-            
-            if articlesTopicsSegment.selectedSegmentIndex == 0 {
-                let array = articlesArray[self.listTableView.indexPathForSelectedRow!.row].articlesMainText
-                let joined = array.joined(separator: "\n\n")
-                detailVC.detailText = joined
-            } else {
-                detailVC.detailText = topicsArray[self.listTableView.indexPathForSelectedRow!.row].topicType.capitalized
-            }
+        
+        guard segue.identifier == "goToDetail" else {
+            return
+        }
+        let detailVC = segue.destination as! DetailViewController
+        if articlesTopicsSegment.selectedSegmentIndex == 0 {
+            let array = articlesArray[self.listTableView.indexPathForSelectedRow!.row].articlesMainText
+            let joined = array.joined(separator: "\n\n")
+            detailVC.detailText = joined
+        } else {
+            detailVC.detailText = topicsArray[self.listTableView.indexPathForSelectedRow!.row].topicType.capitalized
         }
     }
 }
@@ -124,11 +127,9 @@ extension ListScreenViewController {
         articlesJSON.array?.forEach({ (articles) in
             let counter = articles["main_text"]["paragraphs"].count
             var paragraphs = [String]()
-            
             for n in 0..<counter {
                 paragraphs.append(articles["main_text"]["paragraphs"][n]["text"]["value"].stringValue)
             }
-            
             let article = ArticleModel(articleTitle: articles["title"]["value"].stringValue, articleImageID: articles["main_resource"]["image_asset"]["id"].stringValue, articlesMainText: paragraphs.self)
             articlesArray.append(article)
         })
