@@ -17,7 +17,6 @@ class ListScreenViewController: UIViewController {
     @IBOutlet weak var articlesTopicsSegment: UISegmentedControl!
     var searchItem = ""
     private let omniUrl = "https://omni-content.omni.news/search?query=" //Added https to avoide App Transport Security policy required the use of a secure connection
-    private let imageBaseUrl = "https://gfx-ios.omni.se/images/"
     private let cache = ImageCache.default
     private var articlesArray = [ArticleModel]()
     private var topicsArray = [TopicModel]()
@@ -60,16 +59,7 @@ extension ListScreenViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ArticlesAndTopicsCell
         if articlesArray.count > 0 || topicsArray.count > 0 {
             articlesTopicsSegment.isEnabled = true
-            guard articlesTopicsSegment.selectedSegmentIndex == 0 else {
-                cell.articleImage.isHidden = true
-                cell.articleOrTopicLabel.text = topicsArray[indexPath.row].topicTitle
-                return cell
-            }
-            cell.articleImage.isHidden = false
-            let imageUrlID = articlesArray[indexPath.row].articleImageID
-            let resource = ImageResource(downloadURL: URL(string: "\(imageBaseUrl)\(imageUrlID)")!, cacheKey: "\(imageBaseUrl)\(imageUrlID)")
-            cell.articleImage.kf.setImage(with: resource)
-            cell.articleOrTopicLabel.text = articlesArray[indexPath.row].articleTitle
+            cell.setupView(indexPath: indexPath, segmentControlValue: articlesTopicsSegment.selectedSegmentIndex, topics: topicsArray, articles: articlesArray)
         } else {
             articlesTopicsSegment.isEnabled = false
             cell.articleOrTopicLabel.text = "No Items Found"
